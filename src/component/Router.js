@@ -6,6 +6,7 @@ import Shop from "./shop/shop";
 import Shopingcart from "./shopingcart/shopingcart";
 
 import sharkimg from "./assets/shark.jpg";
+import doggyimg from "./assets/doggy.jpg";
 import uniqid from "uniqid";
 function Router() {
   const [items, setItems] = useState([
@@ -19,11 +20,11 @@ function Router() {
       addToCart: 0,
     },
     {
-      itemName: `Shark`,
-      price: 20,
+      itemName: `Doggy`,
+      price: 16.99,
       desc: `To Be Defined`,
       stock: 20,
-      img: sharkimg,
+      img: doggyimg,
       id: uniqid(),
       addToCart: 0,
     },
@@ -32,7 +33,7 @@ function Router() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    console.log(cart);
+    // console.log(cart);
   });
 
   return (

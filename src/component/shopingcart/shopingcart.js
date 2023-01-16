@@ -7,12 +7,10 @@ function Shopingcart(props) {
     if (props.cart.length !== 0) {
       const temparr = [...props.cart];
 
-      for (let i = 0; i > temparr.length; i++) {
-        tempTotal = tempTotal + 1;
-        console.log(`works`);
+      for (let i = 0; i < props.cart.length; i++) {
+        tempTotal = tempTotal + temparr[i].price * temparr[i].quantity;
       }
     }
-    console.log(tempTotal);
     setOrderTotal(tempTotal);
   });
   const updateQuantity = function (e) {
@@ -43,7 +41,7 @@ function Shopingcart(props) {
             title={item.desc}
             width="50px"
             height="50px"
-          />{" "}
+          />
           <div>
             Quantity:
             <input
@@ -66,7 +64,7 @@ function Shopingcart(props) {
     <main>
       <section className="shopingCart">
         <ul>{cart()}</ul>
-        <div>Total : {orderTotal}</div>
+        <div>Total : {orderTotal}$</div>
       </section>
     </main>
   );
