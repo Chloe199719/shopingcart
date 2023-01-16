@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Nav() {
+function Nav(props) {
+  const controler = function () {
+    if (props.itemsBasked === 0) return;
+    return props.itemsBasked;
+  };
   return (
     <header>
       <h1>Place Holder Name</h1>
@@ -14,7 +18,7 @@ function Nav() {
             <li>Shop</li>
           </Link>
           <Link to="/checkout">
-            <li>Shoping Cart</li>
+            <li>Shoping Cart {controler()}</li>
           </Link>
         </ul>
       </nav>
