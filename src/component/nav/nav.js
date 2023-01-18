@@ -18,7 +18,7 @@ function Nav(props) {
             <li>Shop</li>
           </Link>
           <Link to="/checkout">
-            <li>Shoping Cart {controler()}</li>
+            <li>Shopping Cart {controler()}</li>
           </Link>
         </ul>
       </nav>

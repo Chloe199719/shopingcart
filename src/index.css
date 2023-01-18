@@ -30,6 +30,15 @@ header {
   padding: 0 100px;
 }
 
+svg {
+  width: 50px;
+  height: 50px;
+  color: black;
+}
+
+svg:hover {
+  color: blue;
+}
 h1 {
   font-size: 2.5rem;
 }
@@ -88,7 +97,8 @@ main section {
   height: 100px;
   border-radius: 50%;
 }
-.shopItem input {
+.shopItem input,
+.cartItem input {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -137,4 +147,53 @@ main section {
   padding: 10px 50px;
   gap: 20px;
   border-radius: 20px;
+  justify-items: center;
+  width: 100%;
+}
+.btns {
+  display: flex;
+  gap: 40px;
+}
+.shopingCart button {
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: black 1px solid;
+  outline: none;
+  font-size: 1.7rem;
+}
+.shopingCart input {
+  margin-left: 5px;
+}
+.shopingCart button:first-child {
+  background-color: #a3e635;
+}
+.shopingCart button:first-child:hover {
+  background-color: #84cc16;
+  color: white;
+}
+.shopingCart button:first-child:active,
+.shopingCart button:last-child:active {
+  transform: translate(0, -2px);
+}
+.shopingCart button:last-child {
+  background-color: #1e40af;
+}
+.shopingCart button:last-child:hover {
+  background-color: #1e3a8a;
+}
+.shopingCart a {
+  color: white;
+}
+
+.total {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+.total-total {
+  background-color: #ef4444;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 2rem;
 }

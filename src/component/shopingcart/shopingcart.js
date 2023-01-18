@@ -46,12 +46,17 @@ function Shopingcart(props) {
               onChange={updateQuantity}
             ></input>
           </div>
+
           <div>
             Total: ${Math.round(item.quantity * item.price * 100) / 100}
           </div>
-          <button data-index={index} onClick={removeItem}>
-            Remove item
-          </button>
+
+          <svg data-index={index} onClick={removeItem} viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+            />
+          </svg>
         </li>
         // Change image sizing on Css instead
       );
@@ -61,12 +66,15 @@ function Shopingcart(props) {
     <main>
       <section className="shopingCart">
         <ul>{cart()}</ul>
-        <div>Total : {props.orderTotal}$</div>
-        <div>
+        <div className="total">
+          {" "}
+          <div className="total-total">Total : {props.orderTotal}$</div>{" "}
+        </div>
+        <div className="btns">
           <button>Checkout</button>{" "}
           <button>
             {" "}
-            <Link to="/shop">Keep Shoping</Link>
+            <Link to="/shop">Keep Shopping</Link>
           </button>
         </div>
       </section>
