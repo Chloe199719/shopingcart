@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Shopingcart(props) {
   //   const [orderTotal, setOrderTotal] = useState(0);
@@ -61,7 +62,13 @@ function Shopingcart(props) {
       <section className="shopingCart">
         <ul>{cart()}</ul>
         <div>Total : {props.orderTotal}$</div>
-        <button>Checkout</button>
+        <div>
+          <button>Checkout</button>{" "}
+          <button>
+            {" "}
+            <Link to="/shop">Keep Shoping</Link>
+          </button>
+        </div>
       </section>
     </main>
   );
