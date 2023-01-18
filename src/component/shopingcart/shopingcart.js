@@ -33,15 +33,9 @@ function Shopingcart(props) {
     if (props.cart.length === 0) return <p> Empty Cart</p>;
     return props.cart.map((item, index) => {
       return (
-        <li key={item.id}>
+        <li key={item.id} className="cartItem">
           <div>{item.itemName}</div>
-          <img
-            src={item.img}
-            alt={item.itemName}
-            title={item.desc}
-            width="50px"
-            height="50px"
-          />
+          <img src={item.img} alt={item.itemName} title={item.desc} />
           <div>
             Quantity:
             <input

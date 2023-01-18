@@ -1,26 +1,6 @@
 import React from "react";
 import uniqid from "uniqid";
 function Shop(props) {
-  //   const [items, setItems] = useState([
-  //     {
-  //       itemName: `Shark`,
-  //       price: 20,
-  //       desc: `To Be Defined`,
-  //       stock: 20,
-  //       img: sharkimg,
-  //       id: uniqid(),
-  //       addToCart: 1,
-  //     },
-  //     {
-  //       itemName: `Shark`,
-  //       price: 20,
-  //       desc: `To Be Defined`,
-  //       stock: 20,
-  //       img: sharkimg,
-  //       id: uniqid(),
-  //       addToCart: 1,
-  //     },
-  //   ]);
   const shopAddCart = function (e) {
     if (e.target.value > props.items[e.target.dataset.index].stock) return;
     if (e.target.value < 0) return;

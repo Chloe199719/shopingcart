@@ -7,12 +7,14 @@ import Shopingcart from "./shopingcart/shopingcart";
 
 import sharkimg from "./assets/shark.jpg";
 import doggyimg from "./assets/doggy.jpg";
+import cutefoximg from "./assets/cuteFox.png";
+import RilakkumaImg from "./assets/Rilakkuma .png";
 import uniqid from "uniqid";
 function Router() {
   const [items, setItems] = useState([
     {
       itemName: `Shark`,
-      price: 20,
+      price: 20.99,
       desc: `To Be Defined`,
       stock: 20,
       img: sharkimg,
@@ -25,6 +27,24 @@ function Router() {
       desc: `To Be Defined`,
       stock: 20,
       img: doggyimg,
+      id: uniqid(),
+      addToCart: 0,
+    },
+    {
+      itemName: `Fox`,
+      price: 22.99,
+      desc: `To Be Defined`,
+      stock: 20,
+      img: cutefoximg,
+      id: uniqid(),
+      addToCart: 0,
+    },
+    {
+      itemName: `Rilakkuma`,
+      price: 25.99,
+      desc: `To Be Defined`,
+      stock: 20,
+      img: RilakkumaImg,
       id: uniqid(),
       addToCart: 0,
     },
@@ -45,7 +65,7 @@ function Router() {
     }
     tempTotal = Math.round(tempTotal * 100) / 100;
     setOrderTotal(tempTotal); // console.log(cart);
-  });
+  }, [cart]);
   useEffect(() => {
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
