@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function Shopingcart(props) {
   //   const [orderTotal, setOrderTotal] = useState(0);
@@ -51,7 +51,9 @@ function Shopingcart(props) {
               onChange={updateQuantity}
             ></input>
           </div>
-          <div>Total: {Math.round(item.quantity * item.price * 100) / 100}</div>
+          <div>
+            Total: ${Math.round(item.quantity * item.price * 100) / 100}
+          </div>
           <button data-index={index} onClick={removeItem}>
             Remove item
           </button>

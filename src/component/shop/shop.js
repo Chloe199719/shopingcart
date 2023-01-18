@@ -68,20 +68,20 @@ function Shop(props) {
         <h2>Our Products</h2>
         {props.items.map((i, index) => {
           return (
-            <div key={i.id}>
+            <div className="shopItem" key={i.id}>
               <h3>{i.itemName}</h3>
               <img src={i.img} alt={i.itemName} />
               <p>{i.desc}</p>
-              <div>Stock : {i.stock}</div> <div>Price : {i.price}</div>
-              <button data-index={index} onClick={onClick}>
-                Add To Cart
-              </button>{" "}
+              <div>Stock : {i.stock}</div> <div>Price : ${i.price}</div>
               <input
                 data-index={index}
                 type="number"
                 value={i.addToCart}
                 onChange={shopAddCart}
-              ></input>
+              />
+              <button data-index={index} onClick={onClick}>
+                Add To Cart
+              </button>{" "}
             </div>
           );
         })}

@@ -52,7 +52,7 @@ function Router() {
       total = cart[i].quantity + total;
     }
     setItemsBasked(total);
-  });
+  }, [cart]);
   return (
     <BrowserRouter>
       <Nav itemsBasked={itemsBasked} />
