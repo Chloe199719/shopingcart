@@ -31,7 +31,7 @@ function Shopingcart(props) {
     }
   };
   const cart = function () {
-    if (props.cart.length === 0) return <p> Empty Cart</p>;
+    if (props.cart.length === 0) return <p className="empty"> Empty Cart</p>;
     return props.cart.map((item, index) => {
       return (
         <li key={item.id} className="cartItem">
@@ -62,16 +62,22 @@ function Shopingcart(props) {
       );
     });
   };
+  const total = function () {
+    if (props.cart.length === 0) return;
+    return (
+      <div className="total">
+        {" "}
+        <div className="total-total">Total : {props.orderTotal}$</div>{" "}
+      </div>
+    );
+  };
   return (
     <main>
       <section className="shopingCart">
         <ul>{cart()}</ul>
-        <div className="total">
-          {" "}
-          <div className="total-total">Total : {props.orderTotal}$</div>{" "}
-        </div>
+        {total()}
         <div className="btns">
-          <button>Checkout</button>{" "}
+          {props.cart.length ? <button>Checkout</button> : null}
           <button>
             {" "}
             <Link to="/shop">Keep Shopping</Link>
