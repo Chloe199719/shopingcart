@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/shopingcart/static/css/main.c01027e3.css",
-    "main.js": "/shopingcart/static/js/main.0f87b66a.js",
+    "main.js": "/shopingcart/static/js/main.bd381614.js",
     "static/media/Rilakkuma .png": "/shopingcart/static/media/Rilakkuma .c6796e9515203ceba3cf.png",
     "static/media/cuteFox.png": "/shopingcart/static/media/cuteFox.ec56a8090030119ee115.png",
     "static/media/doggy.jpg": "/shopingcart/static/media/doggy.293f639299f592d73300.jpg",
     "static/media/shark.jpg": "/shopingcart/static/media/shark.759a1048e45df4870483.jpg",
     "index.html": "/shopingcart/index.html",
     "main.c01027e3.css.map": "/shopingcart/static/css/main.c01027e3.css.map",
-    "main.0f87b66a.js.map": "/shopingcart/static/js/main.0f87b66a.js.map"
+    "main.bd381614.js.map": "/shopingcart/static/js/main.bd381614.js.map"
   },
   "entrypoints": [
     "static/css/main.c01027e3.css",
-    "static/js/main.0f87b66a.js"
+    "static/js/main.bd381614.js"
   ]
 }
