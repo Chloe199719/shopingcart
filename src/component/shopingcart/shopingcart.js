@@ -30,15 +30,20 @@ function Shopingcart(props) {
       props.setCart(temp);
     }
   };
-  const cart = function () {
+  const Cart = function () {
     if (props.cart.length === 0) return <p className="empty"> Empty Cart</p>;
     return props.cart.map((item, index) => {
       return (
         <li key={item.id} className="cartItem">
           <div>{item.itemName}</div>
           <img src={item.img} alt={item.itemName} title={item.desc} />
-          <div>
+          <div className="quantity">
             Quantity:
+            {/* {item.quantity} 
+            <div className="qntchange">
+              <button>+</button>
+              <button>-</button>
+            </div> */}
             <input
               data-index={index}
               type="number"
@@ -62,7 +67,7 @@ function Shopingcart(props) {
       );
     });
   };
-  const total = function () {
+  const Total = function () {
     if (props.cart.length === 0) return;
     return (
       <div className="total">
@@ -74,8 +79,10 @@ function Shopingcart(props) {
   return (
     <main>
       <section className="shopingCart">
-        <ul>{cart()}</ul>
-        {total()}
+        <ul>
+          <Cart />
+        </ul>
+        <Total />
         <div className="btns">
           {props.cart.length ? <button>Checkout</button> : null}
           <button>

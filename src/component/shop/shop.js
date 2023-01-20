@@ -53,12 +53,15 @@ function Shop(props) {
               <img src={i.img} alt={i.itemName} />
               <p>{i.desc}</p>
               <div>Stock : {i.stock}</div> <div>Price : ${i.price}</div>
-              <input
-                data-index={index}
-                type="number"
-                value={i.addToCart}
-                onChange={shopAddCart}
-              />
+              <div className="quantity">
+                Quantity:
+                <input
+                  data-index={index}
+                  type="number"
+                  value={i.addToCart}
+                  onChange={shopAddCart}
+                />
+              </div>
               <button data-index={index} onClick={onClick}>
                 Add To Cart
               </button>{" "}
