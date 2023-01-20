@@ -23,22 +23,41 @@ function Shop(props) {
   const onClick = function (e) {
     if (props.items[e.target.dataset.index].addToCart === 0) return;
     const temp = [...props.cart];
-    temp.push(
-      new CartItem(
-        props.items[e.target.dataset.index].itemName,
-        props.items[e.target.dataset.index].price,
-        props.items[e.target.dataset.index].desc,
-        props.items[e.target.dataset.index].img,
-        props.items[e.target.dataset.index].addToCart,
-        props.items[e.target.dataset.index].stock,
-        uniqid()
-      )
-    );
+    const index = temp
+      .map((e) => e.itemName)
+      .indexOf(props.items[e.target.dataset.index].itemName);
+    console.log(index);
+    if (index === -1) {
+      temp.push(
+        new CartItem(
+          props.items[e.target.dataset.index].itemName,
+          props.items[e.target.dataset.index].price,
+          props.items[e.target.dataset.index].desc,
+          props.items[e.target.dataset.index].img,
+          props.items[e.target.dataset.index].addToCart,
+          props.items[e.target.dataset.index].stock,
+          uniqid()
+        )
+      );
+    } else {
+      if (
+        props.cart[index].quantity +
+          props.items[e.target.dataset.index].addToCart <=
+        props.items[e.target.dataset.index].stock
+      ) {
+        temp[index].quantity =
+          props.cart[index].quantity +
+          props.items[e.target.dataset.index].addToCart;
+      } else {
+        temp[index].quantity = props.items[e.target.dataset.index].stock;
+        alert(`Added More Items then we Currently have in Stock`);
+      }
+    }
     props.setCart(temp);
     const tempItems = [...props.items];
-    tempItems[e.target.dataset.index].stock =
-      props.items[e.target.dataset.index].stock -
-      props.items[e.target.dataset.index].addToCart;
+    // tempItems[e.target.dataset.index].stock =
+    //   props.items[e.target.dataset.index].stock -
+    //   props.items[e.target.dataset.index].addToCart;
     tempItems[e.target.dataset.index].addToCart = 0;
     props.setItems(tempItems);
   };

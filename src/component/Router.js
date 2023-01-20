@@ -74,7 +74,7 @@ function Router() {
     setItemsBasked(total);
   }, [cart]);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Nav itemsBasked={itemsBasked} />
       <Routes>
         <Route path="/" element={<Home items={items} />} />
