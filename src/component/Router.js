@@ -74,7 +74,7 @@ function Router() {
     setItemsBasked(total);
   }, [cart]);
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/shopingcart">
       <Nav itemsBasked={itemsBasked} />
       <Routes>
         <Route path="/" element={<Home items={items} />} />
@@ -82,8 +82,8 @@ function Router() {
           path="/shop"
           element={
             <Shop
-              items={items}
               setItems={setItems}
+              items={items}
               cart={cart}
               setCart={setCart}
             />
@@ -96,6 +96,8 @@ function Router() {
               cart={cart}
               setCart={setCart}
               orderTotal={orderTotal}
+              setItems={setItems}
+              items={items}
             />
           }
         />

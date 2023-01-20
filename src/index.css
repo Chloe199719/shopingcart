@@ -122,7 +122,7 @@ main section {
 }
 .shopItem {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 150px 1fr;
   align-items: center;
   padding: 10px 50px;
   justify-content: space-evenly;
@@ -142,10 +142,13 @@ main section {
   border-radius: 0;
   outline: none;
   border: none;
-  background-color: inherit;
+  background-color: darkgray;
   color: white;
   font-size: inherit;
+  border-radius: 5px;
+  padding-left: 2px;
 }
+
 .shopItem:nth-child(odd),
 .cartItem:nth-child(odd) {
   background-color: #0891b2;
@@ -256,6 +259,13 @@ main section {
 .quantity {
   display: flex;
   align-items: center;
+}
+.dir {
+  flex-direction: column;
+}
+.outStock {
+  color: red;
+  font-weight: bold;
 }
 /* Unused code For Change Quantity selection */
 /* 

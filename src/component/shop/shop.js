@@ -26,7 +26,6 @@ function Shop(props) {
     const index = temp
       .map((e) => e.itemName)
       .indexOf(props.items[e.target.dataset.index].itemName);
-    console.log(index);
     if (index === -1) {
       temp.push(
         new CartItem(
@@ -71,16 +70,25 @@ function Shop(props) {
               <h3>{i.itemName}</h3>
               <img src={i.img} alt={i.itemName} />
               <p>{i.desc}</p>
-              <div>Stock : {i.stock}</div> <div>Price : ${i.price}</div>
-              <div className="quantity">
-                Quantity:
-                <input
-                  data-index={index}
-                  type="number"
-                  value={i.addToCart}
-                  onChange={shopAddCart}
-                />
+              <div>Stock : {i.stock}</div>
+              <div className="quantity dir">
+                Price : <div> ${i.price}</div>
               </div>
+              {i.stock ? (
+                <div className="quantity">
+                  Quantity:
+                  <input
+                    data-index={index}
+                    type="number"
+                    value={i.addToCart}
+                    onChange={shopAddCart}
+                  />
+                </div>
+              ) : (
+                <div className="outStock">
+                  <div>Out of Stock </div>
+                </div>
+              )}
               <button data-index={index} onClick={onClick}>
                 Add To Cart
               </button>{" "}

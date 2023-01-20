@@ -14,6 +14,18 @@ function Shopingcart(props) {
   // //     }
   // //     setOrderTotal(tempTotal);
   // //   });
+  const checkout = function (e) {
+    let tempcart = [];
+    let tempItems = [...props.items];
+    for (let i = 0; i < props.cart.length; i++) {
+      const index = props.items
+        .map((e) => e.itemName)
+        .indexOf(props.cart[i].itemName);
+      tempItems[index].stock = tempItems[index].stock - props.cart[i].quantity;
+    }
+    props.setItems(tempItems);
+    props.setCart(tempcart);
+  };
   const updateQuantity = function (e) {
     const index = e.target.dataset.index;
     if (e.target.value > props.cart[index].stock) return;
@@ -84,7 +96,9 @@ function Shopingcart(props) {
         </ul>
         <Total />
         <div className="btns">
-          {props.cart.length ? <button>Checkout</button> : null}
+          {props.cart.length ? (
+            <button onClick={checkout}>Checkout</button>
+          ) : null}
           <button>
             {" "}
             <Link to="/shop">Keep Shopping</Link>
