@@ -97,6 +97,24 @@ main h3 {
 main section {
   max-width: 1200px;
 }
+.info {
+  width: 80%;
+  max-width: 1200px;
+}
+/* Info Home Page */
+.info .context {
+  word-wrap: break-word;
+  border-radius: 20px;
+  font-size: 2rem;
+  padding: 30px 50px;
+  background-color: #0891b2;
+  margin-bottom: 20px;
+}
+.info h2 {
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+/* Shop */
 .shop {
   display: flex;
   flex-direction: column;
