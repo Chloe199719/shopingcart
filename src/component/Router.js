@@ -58,6 +58,7 @@ function Router() {
       const newData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
+        addToCart: 1,
       }));
       setItems(newData);
     });

@@ -1,7 +1,20 @@
 import React from "react";
 import uniqid from "uniqid";
+import { useRef, useEffect } from "react";
 function Shop(props) {
+  // let quantity = useRef([]);
+
+  // useEffect(() => {
+  //   for (let i = 0; i < quantity.current.length; i++) {}
+  //   console.log(quantity.current);
+  // }, [props.items]);
   const shopAddCart = function (e) {
+    // if (e.target.value > props.items[e.target.dataset.index].stock) {
+    //   e.target.value = props.items[e.target.dataset.index].stock;
+    // }
+    // if (e.target.value < 0) {
+    //   e.target.value = 0;
+    // }
     if (e.target.value > props.items[e.target.dataset.index].stock) return;
     if (e.target.value < 0) return;
     const temp = [...props.items];
@@ -35,7 +48,7 @@ function Shop(props) {
           props.items[e.target.dataset.index].img,
           props.items[e.target.dataset.index].addToCart,
           props.items[e.target.dataset.index].stock,
-          uniqid()
+          props.items[e.target.dataset.index].id
         )
       );
     } else {
@@ -54,6 +67,7 @@ function Shop(props) {
     }
     props.setCart(temp);
     const tempItems = [...props.items];
+
     // tempItems[e.target.dataset.index].stock =
     //   props.items[e.target.dataset.index].stock -
     //   props.items[e.target.dataset.index].addToCart;
@@ -80,8 +94,8 @@ function Shop(props) {
                   <input
                     data-index={index}
                     type="number"
-                    value={i.addToCart}
                     onChange={shopAddCart}
+                    value={i.addToCart}
                   />
                 </div>
               ) : (
