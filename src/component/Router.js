@@ -10,6 +10,9 @@ import doggyimg from "./assets/doggy.jpg";
 import cutefoximg from "./assets/cuteFox.png";
 import RilakkumaImg from "./assets/Rilakkuma .png";
 import uniqid from "uniqid";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase";
+
 function Router() {
   const [items, setItems] = useState([
     {
@@ -49,6 +52,16 @@ function Router() {
       addToCart: 0,
     },
   ]);
+
+  useEffect(() => {
+    onSnapshot(collection(db, `shopItem`), (data) => {
+      const newData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setItems(newData);
+    });
+  }, []);
 
   const [cart, setCart] = useState([]);
   const [orderTotal, setOrderTotal] = useState(0);

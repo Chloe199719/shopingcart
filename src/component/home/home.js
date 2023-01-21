@@ -1,6 +1,35 @@
 import React from "react";
+import { auth, db } from "../../firebase";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, getDocs } from "firebase/firestore";
+import { useState } from "react";
 
+// const fetchdata = async function () {
+//   await getDocs(collection(db, "shopItem")).then((querySnapshot) => {
+//     const newData = querySnapshot.docs.map((doc) => ({
+//       ...doc.data(),
+//       id: doc.id,
+//     }));
+//     console.log(newData);
+//   });
+// };
 function Home(props) {
+  const [user] = useAuthState(auth);
+  const signin = function () {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+  function Log() {
+    if (user) {
+      return (
+        <div>
+          <p>Current User: {user.displayName}</p>
+        </div>
+      );
+    }
+  }
+
   return (
     <main>
       <section className="info">
@@ -20,6 +49,22 @@ function Home(props) {
             donate 1$ to the TransYouth Foundation and every 10 animals sold we
             also donate a stuffed animal to the same assosiation{" "}
           </p>
+        </div>
+        <h2>Bring a smile</h2>
+        <div className="context">
+          <p>
+            <button onClick={signin}>Sign In</button>
+
+            <button
+              onClick={() => {
+                signOut(auth);
+              }}
+            >
+              Sign signOut
+            </button>
+            <button>Log</button>
+          </p>
+          <Log />
         </div>
       </section>
     </main>
