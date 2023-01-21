@@ -52,7 +52,16 @@ li {
   list-style: none;
   font-size: 1.5rem;
 }
-
+nav li {
+  padding: 10px 20px;
+}
+nav li:hover {
+  background-color: #0e7490;
+  border-radius: 20px;
+}
+nav li:last-child {
+  padding: 5px;
+}
 nav li a:last-child {
   position: relative;
 }
@@ -212,7 +221,7 @@ main section {
   font-size: 1.7rem;
   transition: ease-in-out 200ms;
 }
-.shopingCart input {
+/* .shopingCart input {
   width: 50px;
   margin-left: 5px;
   border-radius: 0;
@@ -221,7 +230,7 @@ main section {
   background-color: inherit;
   color: white;
   font-size: inherit;
-}
+} */
 .btns button:first-child {
   background-color: #a3e635;
 }
@@ -231,7 +240,8 @@ main section {
 }
 .btns button:first-child:active,
 .btns button:last-child:active,
-.shopItem button:active {
+.shopItem button:active,
+nav li:active {
   transform: translate(0, -2px);
 }
 .btns button:last-child {
