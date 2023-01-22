@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormEdit from "./admin/FormEdit";
+import FormEdit from "./FormEdit";
 
 function Modal({ i, index, deleteItem }) {
   const [open, setOpen] = useState(false);

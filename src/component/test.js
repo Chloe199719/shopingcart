@@ -8,7 +8,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import Modal from "../modal";
+import Modal from "../admin/modal";
 
 function Test() {
   const [items, setItems] = useState([]);
