@@ -1,9 +1,8 @@
 import React from "react";
-import { auth, db } from "../../firebase";
+import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, getDocs } from "firebase/firestore";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // const fetchdata = async function () {
 //   await getDocs(collection(db, "shopItem")).then((querySnapshot) => {
@@ -50,7 +49,7 @@ function Home(props) {
             also donate a stuffed animal to the same assosiation{" "}
           </p>
         </div>
-        <h2>Bring a smile</h2>
+        <h2>Test section</h2>
         <div className="context">
           <p>
             <button onClick={signin}>Sign In</button>
@@ -63,6 +62,7 @@ function Home(props) {
               Sign signOut
             </button>
             <button>Log</button>
+            <Link to="/admin">admin</Link>
           </p>
           <Log />
         </div>

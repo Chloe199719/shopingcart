@@ -12,6 +12,7 @@ import RilakkumaImg from "./assets/Rilakkuma .png";
 import uniqid from "uniqid";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import Test from "./test";
 
 function Router() {
   const [items, setItems] = useState([
@@ -88,7 +89,7 @@ function Router() {
     setItemsBasked(total);
   }, [cart]);
   return (
-    <BrowserRouter basename="/shopingcart">
+    <BrowserRouter basename="/">
       <Nav itemsBasked={itemsBasked} />
       <Routes>
         <Route path="/" element={<Home items={items} />} />
@@ -115,6 +116,7 @@ function Router() {
             />
           }
         />
+        <Route path="/admin" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
