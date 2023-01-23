@@ -4,17 +4,35 @@ import Home from "./home/home";
 import Nav from "./nav/nav";
 import Shop from "./shop/shop";
 import Shopingcart from "./shopingcart/shopingcart";
-
+import { useAuthState } from "react-firebase-hooks/auth";
 import sharkimg from "./assets/shark.jpg";
 import doggyimg from "./assets/doggy.jpg";
 import cutefoximg from "./assets/cuteFox.png";
 import RilakkumaImg from "./assets/Rilakkuma .png";
 import uniqid from "uniqid";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 import Test from "./test";
-
+import { doc, getDoc } from "firebase/firestore";
 function Router() {
+  const [user] = useAuthState(auth);
+  const [admin, setAdmin] = useState();
+  useEffect(() => {
+    if (user) {
+      const docRef = doc(db, "admin", user.uid);
+      const data = async () => {
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setAdmin(docSnap.data().isAdmin);
+        } else {
+          setAdmin(false);
+        }
+      };
+      data();
+    } else {
+      setAdmin(false);
+    }
+  }, [user]);
   const [items, setItems] = useState([
     {
       itemName: `Shark`,
@@ -116,7 +134,7 @@ function Router() {
             />
           }
         />
-        <Route path="/admin" element={<Test />} />
+        <Route path="/admin" element={<Test admin={admin} />} />
       </Routes>
     </BrowserRouter>
   );

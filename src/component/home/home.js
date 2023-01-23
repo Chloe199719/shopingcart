@@ -1,8 +1,10 @@
-import React from "react";
-import { auth } from "../../firebase";
+import React, { useState } from "react";
+import { auth, db } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 // const fetchdata = async function () {
 //   await getDocs(collection(db, "shopItem")).then((querySnapshot) => {
@@ -15,20 +17,36 @@ import { Link } from "react-router-dom";
 // };
 function Home(props) {
   const [user] = useAuthState(auth);
+  const [admin, setAdmin] = useState();
   const signin = function () {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
   };
   function Log() {
     if (user) {
+      admincheck();
       return (
         <div>
-          <p>Current User: {user.displayName}</p>
+          <p>
+            Current User: {user.displayName} {user.uid}
+          </p>
         </div>
       );
     }
   }
-
+  const admincheck = async function () {
+    const docRef = doc(db, "admin", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setAdmin(docSnap.data().isAdmin);
+    } else {
+      setAdmin(false);
+    }
+  };
+  const logOut = async function () {
+    await signOut(auth);
+    setAdmin(false);
+  };
   return (
     <main>
       <section className="info">
@@ -49,23 +67,17 @@ function Home(props) {
             also donate a stuffed animal to the same assosiation{" "}
           </p>
         </div>
-        <h2>Test section</h2>
+        {/* <h2>Test section</h2>
         <div className="context">
           <p>
             <button onClick={signin}>Sign In</button>
 
-            <button
-              onClick={() => {
-                signOut(auth);
-              }}
-            >
-              Sign signOut
-            </button>
+            <button onClick={logOut}>Sign signOut</button>
             <button>Log</button>
-            <Link to="/admin">admin</Link>
+            {admin ? <Link to="/admin">admin</Link> : null}
           </p>
           <Log />
-        </div>
+        </div> */}
       </section>
     </main>
   );

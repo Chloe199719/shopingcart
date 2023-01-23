@@ -59,13 +59,21 @@ nav li:hover {
   background-color: #0e7490;
   border-radius: 20px;
 }
-nav li:last-child {
+.icon {
   padding: 5px;
 }
-nav li a:last-child {
+.icon a {
   position: relative;
 }
-
+.userId {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userId img {
+  height: 70px;
+  border-radius: 20px;
+}
 .shopingCartNumb {
   position: absolute;
   /* z-index: 1; */

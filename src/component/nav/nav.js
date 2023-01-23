@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Admin from "./Admin";
+import SignIn from "./SignIn";
 
 function Nav(props) {
   const Controler = function () {
@@ -20,8 +22,8 @@ function Nav(props) {
           <li>
             <Link to="/shop">Shop </Link>
           </li>
-
-          <li>
+          <Admin />
+          <li className="icon">
             <Link to="/checkout">
               <svg viewBox="0 0 24 24">
                 <path
@@ -34,6 +36,7 @@ function Nav(props) {
               </div>
             </Link>
           </li>
+          <SignIn />
         </ul>
       </nav>
     </header>

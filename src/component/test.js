@@ -1,16 +1,21 @@
 import React, { useRef, useState, useEffect } from "react";
-import { db, storage } from "../firebase";
+import { db, storage, auth } from "../firebase";
 import {
   addDoc,
   collection,
   onSnapshot,
   doc,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Modal from "../admin/modal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Navigate } from "react-router-dom";
 
-function Test() {
+function Test({ admin }) {
+  // const [user] = useAuthState(auth);
+
   const [items, setItems] = useState([]);
   const [percent, setPercent] = useState(0);
   const [file, setFile] = useState(``);
@@ -29,7 +34,36 @@ function Test() {
       }));
       setItems(newData);
     });
-  }, [items]);
+  }, []);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     const docRef = doc(db, "admin", user.uid);
+  //     const data = async () => {
+  //       const docSnap = await getDoc(docRef);
+  //       if (docSnap.exists()) {
+  //         setAdmin(docSnap.data().isAdmin);
+  //       } else {
+  //         setAdmin(false);
+  //       }
+  //     };
+  //   }
+  //   setAdmin(false);
+  // }, [user]);
+
+  // const Redirect = async function () {
+  //   if (user) {
+  //     const docRef = doc(db, "admin", user.uid);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       return null;
+  //     } else {
+  //       return;
+  //     }
+  //   } else {
+  //     return <Navigate to="/" replace={true} />;
+  //   }
+  // };
 
   const handleUpload = async function () {
     if (!file) {
@@ -80,6 +114,7 @@ function Test() {
 
   return (
     <main>
+      {admin ? null : <Navigate to="/" replace={true} />}
       <form onSubmit={sendData}>
         <div>
           <label>Product Name</label>{" "}
